@@ -4,7 +4,7 @@ Summary(pl):	Lout - jêzyk formatowania dokumentów
 Summary(pt_BR):	Sistema de formatação de texto
 Name:		lout
 Version:	3.29
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Publishing
 Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
