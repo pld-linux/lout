@@ -16,15 +16,6 @@
  
  LIBFONT = font
  LIBMAPS = maps
-@@ -305,7 +306,7 @@
- 
- RCOPY	= cp -r
- 
--COPTS	= -ansi -pedantic -Wall -O3
-+COPTS	= -ansi -pedantic -Wall $(RPM_OPT_FLAGS)
- # COPTS	= -ansi -pedantic -Wall
- 
- CFLAGS	= -DOS_UNIX=$(OSUNIX)					\
 @@ -353,92 +354,95 @@
  
  install: lout prg2lout
