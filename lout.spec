@@ -73,7 +73,7 @@ maioria dos idiomas europeus são suportados, inclusive russo),
 formatação de programas C/C++, e muito mais, tudo pronto para usar.
 
 %prep
-%setup -q 
+%setup -q
 %patch0 -p1
 
 %build
