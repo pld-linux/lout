@@ -1,17 +1,17 @@
 Summary:	The Lout document formatting language
 Summary(pl):	Lout - jêzyk formatowania dokumentów
 Name:		lout
-Version:	3.08
-Release:	8
+Version:	3.24
+Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Group(de):	Applikationen/Publizieren
 Group(es):	Aplicaciones/Editoración
 Group(pl):	Aplikacje/Publikowanie
 Group(pt_BR):	Aplicações/Editoração
-Source0:	ftp://ftp.cs.su.oz.au/jeff/%{name}.%{version}.tar.gz
-Patch0:		%{name}-3.08-make.patch
-Patch1:		%{name}-3.08-nobr.patch
+Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
+Patch0:		%{name}-makefile.patch
+URL:		http://www.ptc.spbu.ru/~uwe/lout/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -72,15 +72,14 @@ naapisanych w Loucie i dostêpnych w plikach PostScript. Dokumentacja
 to tak¿e dobre przyk³ady jak tworzyæ du¿e dokumenty w Loucie.
 
 %prep
-%setup -q -n lout.3.08
+%setup -q 
 %patch0 -p1
-%patch1 -p1
 
 %build
 %ifarch sparc
-%{__make} RPM_OPT_FLAGS="" lout c2lout
+%{__make} RPM_OPT_FLAGS=""
 %else
-%{__make} RPM_OPT_FLAGS="%{rpmcflags}" lout c2lout
+%{__make} RPM_OPT_FLAGS="%{rpmcflags}"
 %endif
 
 %install
@@ -100,12 +99,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc blurb.gz README.gz maillist.gz whatsnew.gz notes.dsc.gz
-%attr(755,root,root) %{_bindir}/lout
-%attr(755,root,root) %{_bindir}/c2lout
-%{_mandir}/man1/lout.1*
-%{_mandir}/man1/c2lout.1*
-%{_libdir}/lout
+%doc *.gz
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*.1*
+%dir %{_libdir}/lout
+%{_libdir}/lout/*
 
 %files doc
 %defattr(644,root,root,755)
