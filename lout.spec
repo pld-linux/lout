@@ -48,16 +48,16 @@ package.
 
 %build
 %ifarch sparc
-make RPM_OPT_FLAGS="" lout c2lout
+%{__make} RPM_OPT_FLAGS="" lout c2lout
 %else
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS" lout c2lout
+%{__make} RPM_OPT_FLAGS="$RPM_OPT_FLAGS" lout c2lout
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/usr/{bin,doc,lib,man/man1}
 
-make DESTDIR=$RPM_BUILD_ROOT install installman installdoc
+%{__make} DESTDIR=$RPM_BUILD_ROOT install installman installdoc
 
 for i in user slides expert design; do
     chmod 755 $RPM_BUILD_ROOT/usr/doc/lout/$i
