@@ -1,14 +1,17 @@
-Summary:	The Lout document formatting language.
+Summary:	The Lout document formatting language
+Summary(pl):	Lout - jêzyk formatowania dokumentów
 Name:		lout
 Version:	3.08
-Release:	7
+Release:	8
+License:	GPL
 Group:		Applications/Publishing
 Group(de):	Applikationen/Publizieren
+Group(es):	Aplicaciones/Editoración
 Group(pl):	Aplikacje/Publikowanie
+Group(pt_BR):	Aplicações/Editoração
 Source0:	ftp://ftp.cs.su.oz.au/jeff/%{name}.%{version}.tar.gz
 Patch0:		%{name}-3.08-make.patch
 Patch1:		%{name}-3.08-nobr.patch
-License:	GPL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,11 +33,27 @@ formatting system. Unless you're already a Lout expert, you'll
 probably want to also install the lout-doc package, which contains the
 documentation for Lout.
 
+%description -l pl
+Lout to jêzyk wysokiego poziomu do formatowania dokumentów. Lout czyta
+opis dokumentu (w stylu przypominaj±cym LaTeX) i mo¿e wyprodukowaæ
+plik PostScript(TM) do wydruku lub czysty tekst. Obs³uguje sk³adanie
+dokumentów zawieraj±cych rysunki, diagramy, obracany lub skalowany
+tekst lub grafikê, przypisy, nag³ówki, stopki, indeks, spis tre¶ci
+oraz bibliografiê, odno¶niki, równania matematyczne i wykresy
+statystyczne. Lout mo¿e byæ rozszerzany przez definicje, co u³atwia
+pisane w stosunku do innych jêzyków, poniewa¿ Lout jest jêzykiem
+wysokiego poziomu. Lout wspiera (z dzieleniem wyrazów) wiele jêzyków:
+angielski, czeski, duñski, fiñski, francuski, hiszpañski, holenderski,
+niemiecki, norweski, rosyjski, s³oweñski i szwedzki.
+
 %package doc
-Summary:	The documentation for the Lout document formatting language.
+Summary:	The documentation for the Lout document formatting language
+Summary(pl):	Dokumentacja do jêzyka formatowania dokumentów Lout
 Group:		Applications/Publishing
 Group(de):	Applikationen/Publizieren
+Group(es):	Aplicaciones/Editoración
 Group(pl):	Aplikacje/Publikowanie
+Group(pt_BR):	Aplicações/Editoração
 
 %description doc
 The lout-doc package includes all of the documentation for the Lout
@@ -46,10 +65,16 @@ to write large documents with Lout.
 If you're installing the lout package, you should install the lout-doc
 package.
 
+%description doc -l pl
+Ten pakiet zawiera ca³± dokumentacjê do jêzyka formatowania dokumentów
+Lout. Sk³ada siê z podrêczników dla zwyk³ych u¿ytkowników i ekspertów,
+naapisanych w Loucie i dostêpnych w plikach PostScript. Dokumentacja
+to tak¿e dobre przyk³ady jak tworzyæ du¿e dokumenty w Loucie.
+
 %prep
 %setup -q -n lout.3.08
 %patch0 -p1
-%patch1 -p1 -b .nobr
+%patch1 -p1
 
 %build
 %ifarch sparc
@@ -68,12 +93,14 @@ for i in user slides expert design; do
 	chmod 755 $RPM_BUILD_ROOT%{_docdir}/lout/$i
 done
 
+gzip -9nf blurb README maillist whatsnew notes.dsc
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc blurb README maillist whatsnew notes.dsc
+%doc blurb.gz README.gz maillist.gz whatsnew.gz notes.dsc.gz
 %attr(755,root,root) %{_bindir}/lout
 %attr(755,root,root) %{_bindir}/c2lout
 %{_mandir}/man1/lout.1*
@@ -82,4 +109,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(644,root,root,755)
-%attr(-,root,root %{_docdir}/lout
+%doc %{_docdir}/lout
