@@ -4,7 +4,7 @@ Summary(pl):	Lout - jêzyk formatowania dokumentów
 Summary(pt_BR):	Sistema de formatação de texto
 Name:		lout
 Version:	3.29
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Publishing
 Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
@@ -80,12 +80,17 @@ formatação de programas C/C++, e muito mais, tudo pronto para usar.
 %build
 %{__make} lout prg2lout \
 	COPTS="-ansi -pedantic -Wall %{rpmcflags}" \
-	CC=%{__cc}
+	CC="%{__cc}"
 
-(cd doc/design; ../../lout -EPS -I ../../include -D../../data all -o ../../design.ps)
-(cd doc/expert; ../../lout -EPS -I ../../include -D../../data all -o ../../expert.ps)
-(cd doc/slides; ../../lout -EPS -I ../../include -D../../data all -o ../../slides.ps)
-(cd doc/user; ../../lout -EPS -I ../../include -D../../data all -o ../../user.ps)
+cd doc/design
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../design.ps
+cd ../expert
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../expert.ps
+cd ../slides
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../slides.ps
+cd ../user
+PATH="../..:$PATH" \
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../user.ps
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -101,5 +106,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc blurb README maillist whatsnew *.ps
 %attr(755,root,root) %{_bindir}/*
+%{_libdir}/lout
 %{_mandir}/man1/*.1*
-%dir %{_libdir}/lout
