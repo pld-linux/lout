@@ -8,6 +8,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
+# Source0-md5:	c5aa6ba32b3bb1cb6cc434ff3954f117
 Patch0:		%{name}-makefile.patch
 URL:		http://www.ptc.spbu.ru/~uwe/lout/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
