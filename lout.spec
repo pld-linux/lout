@@ -93,14 +93,12 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir},%{_mandir}/man1}
 %{__make} install installman \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf blurb README maillist whatsnew notes.dsc *.ps
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc blurb README maillist whatsnew notes.dsc *.ps
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*.1*
 %dir %{_libdir}/lout
