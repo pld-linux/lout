@@ -1,0 +1,26 @@
+--- lout.3.08/makefile.orig	Wed May  8 06:33:44 1996
++++ lout.3.08/makefile	Thu Jul 25 21:22:30 1996
+@@ -203,10 +203,10 @@
+ 
+ USESTAT = 1
+ 
+-BINDIR	= /u12/staff/jeff/bin
+-LIBDIR	= /u12/staff/jeff/lout.lib
+-DOCDIR	= /u12/staff/jeff/lout.doc
+-MANDIR	= /u12/staff/jeff/lout.man
++BINDIR	= /usr/bin
++LIBDIR	= /usr/lib/lout
++DOCDIR	= /usr/doc/lout
++MANDIR	= /usr/man/man1
+ 
+ CHARIN	= 1
+ CHAROUT	= 0
+@@ -217,7 +217,7 @@
+ 
+ CC	= gcc
+ 
+-COPTS	= -ansi -pedantic -Wall
++COPTS	= -ansi -pedantic -Wall $(RPM_OPT_FLAGS)
+ 
+ CFLAGS	= -DOS_UNIX=$(OSUNIX)					\
+ 	  -DOS_DOS=$(OSDOS)					\

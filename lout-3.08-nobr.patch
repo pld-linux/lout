@@ -1,0 +1,158 @@
+--- lout.3.08/makefile.nobr	Sun Aug 16 11:08:16 1998
++++ lout.3.08/makefile	Sun Aug 16 11:17:56 1998
+@@ -257,91 +257,96 @@
+ install: lout c2lout
+ 	@echo ""
+ 	@echo "(a) Installing Lout and c2lout binaries into BINDIR $(BINDIR)"
+-	cp lout $(BINDIR)/lout
+-	chmod 755 $(BINDIR)/lout
+-	cp c2lout $(BINDIR)/c2lout
+-	chmod 755 $(BINDIR)/c2lout
++	cp lout $(DESTDIR)$(BINDIR)/lout
++	chmod 755 $(DESTDIR)$(BINDIR)/lout
++	cp c2lout $(DESTDIR)$(BINDIR)/c2lout
++	chmod 755 $(DESTDIR)$(BINDIR)/c2lout
+ 	@echo ""
+ 	@echo "(b) Installing library files into LIBDIR $(LIBDIR)"
+-	mkdir $(LIBDIR)
+-	chmod 755 $(LIBDIR)
++	mkdir -p $(DESTDIR)$(LIBDIR)
++	chmod 755 $(DESTDIR)$(LIBDIR)
+ 	@echo ""
+-	mkdir $(LIBDIR)/include
+-	chmod 755 $(LIBDIR)/include
+-	cp include/* $(LIBDIR)/include
+-	chmod 644 $(LIBDIR)/include/*
+-	@echo ""
+-	mkdir $(LIBDIR)/data
+-	chmod 755 $(LIBDIR)/data
+-	cp data/* $(LIBDIR)/data
+-	chmod 644 $(LIBDIR)/data/*
+-	@echo ""
+-	mkdir $(LIBDIR)/hyph
+-	chmod 755 $(LIBDIR)/hyph
+-	cp hyph/* $(LIBDIR)/hyph
+-	chmod 644 $(LIBDIR)/hyph/*
+-	@echo ""
+-	mkdir $(LIBDIR)/font
+-	chmod 755 $(LIBDIR)/font
+-	cp font/* $(LIBDIR)/font
+-	chmod 644 $(LIBDIR)/font/*
+-	@echo ""
+-	mkdir $(LIBDIR)/maps
+-	chmod 755 $(LIBDIR)/maps
+-	cp maps/* $(LIBDIR)/maps
+-	chmod 644 $(LIBDIR)/maps/*
++	mkdir -p $(DESTDIR)$(LIBDIR)/include
++	chmod 755 $(DESTDIR)$(LIBDIR)/include
++	cp include/* $(DESTDIR)$(LIBDIR)/include
++	chmod 644 $(DESTDIR)$(LIBDIR)/include/*
++	@echo ""
++	mkdir -p $(DESTDIR)$(LIBDIR)/data
++	chmod 755 $(DESTDIR)$(LIBDIR)/data
++	cp data/* $(DESTDIR)$(LIBDIR)/data
++	chmod 644 $(DESTDIR)$(LIBDIR)/data/*
++	@echo ""
++	mkdir -p $(DESTDIR)$(LIBDIR)/hyph
++	chmod 755 $(DESTDIR)$(LIBDIR)/hyph
++	cp hyph/* $(DESTDIR)$(LIBDIR)/hyph
++	chmod 644 $(DESTDIR)$(LIBDIR)/hyph/*
++	@echo ""
++	mkdir -p $(DESTDIR)$(LIBDIR)/font
++	chmod 755 $(DESTDIR)$(LIBDIR)/font
++	cp font/* $(DESTDIR)$(LIBDIR)/font
++	chmod 644 $(DESTDIR)$(LIBDIR)/font/*
++	@echo ""
++	mkdir -p $(DESTDIR)$(LIBDIR)/maps
++	chmod 755 $(DESTDIR)$(LIBDIR)/maps
++	cp maps/* $(DESTDIR)$(LIBDIR)/maps
++	chmod 644 $(DESTDIR)$(LIBDIR)/maps/*
+ 	@echo ""
+-	mkdir $(LIBDIR)/locale
+-	chmod 755 $(LIBDIR)/locale
++	mkdir -p $(DESTDIR)$(LIBDIR)/locale
++	chmod 755 $(DESTDIR)$(LIBDIR)/locale
+ 	@echo ""
+ 	@echo "(c) Initializing run (should be silent, no errors expected)"
+-	$(BINDIR)/lout -x -s $(LIBDIR)/include/init
++	$(DESTDIR)$(BINDIR)/lout -x -s $(DESTDIR)$(LIBDIR)/include/init \
++		-I$(DESTDIR)$(LIBDIR)/include \
++		-D$(DESTDIR)$(LIBDIR)/data \
++		-F$(DESTDIR)$(LIBDIR)/font \
++		-H$(DESTDIR)$(LIBDIR)/hyph \
++		-C$(DESTDIR)$(LIBDIR)/maps
+ 	@echo ""
+ 	@echo "(d) Changing mode of files just created by initializing run"
+-	chmod 644 $(LIBDIR)/data/*
+-	chmod 644 $(LIBDIR)/hyph/*
++	chmod 644 $(DESTDIR)$(LIBDIR)/data/*
++	chmod 644 $(DESTDIR)$(LIBDIR)/hyph/*
+ 
+ installman:
+ 	@echo ""
+ 	@echo "Installing manual entries into MANDIR $(MANDIR)"
+ 	sed -e "s@<BINDIR>@$(BINDIR)@" -e "s@<LIBDIR>@$(LIBDIR)@"	\
+ 	    -e "s@<DOCDIR>@$(DOCDIR)@" -e "s@<MANDIR>@$(MANDIR)@"	\
+-	man/lout.1 > $(MANDIR)/lout.1
+-	chmod 644 $(MANDIR)/lout.1
+-	cp man/c2lout.1 $(MANDIR)/c2lout.1
+-	chmod 644 $(MANDIR)/c2lout.1
++	man/lout.1 > $(DESTDIR)$(MANDIR)/lout.1
++	chmod 644 $(DESTDIR)$(MANDIR)/lout.1
++	cp man/c2lout.1 $(DESTDIR)$(MANDIR)/c2lout.1
++	chmod 644 $(DESTDIR)$(MANDIR)/c2lout.1
+ 
+ installdoc:
+ 	@echo ""
+ 	@echo "Creating DOCDIR $(DOCDIR) and copying documentation into it"
+-	cp -r doc $(DOCDIR)
+-	chmod 755 $(DOCDIR)
+-	chmod 755 $(DOCDIR)/*
+-	chmod 644 $(DOCDIR)/*/*
++	cp -r doc $(DESTDIR)$(DOCDIR)
++	chmod 755 $(DESTDIR)$(DOCDIR)
++	chmod 755 $(DESTDIR)$(DOCDIR)/*
++	chmod 644 $(DESTDIR)$(DOCDIR)/*/*
+ 
+ installfr:
+ 	@echo ""
+ 	@echo "Installing French error messages into $(LIBDIR)/locale/$(LOC_FR)"
+-	mkdir $(LIBDIR)/locale/$(LOC_FR)
+-	chmod 755 $(LIBDIR)/locale/$(LOC_FR)
+-	mkdir $(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES
+-	chmod 755 $(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES
+-	cp locale/msgs.fr $(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/msgs.$(LOC_FR)
+-	gencat $(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/errors.$(LOC_FR)	\
+-	       $(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/msgs.$(LOC_FR)
+-	chmod 644 $(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/*
++	mkdir -p $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)
++	chmod 755 $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)
++	mkdir -p $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES
++	chmod 755 $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES
++	cp locale/msgs.fr $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/msgs.$(LOC_FR)
++	gencat $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/errors.$(LOC_FR)	\
++	       $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/msgs.$(LOC_FR)
++	chmod 644 $(DESTDIR)$(LIBDIR)/locale/$(LOC_FR)/LC_MESSAGES/*
+ 
+ installde:
+ 	@echo ""
+ 	@echo "Installing German error messages into $(LIBDIR)/locale/$(LOC_DE)"
+-	mkdir $(LIBDIR)/locale/$(LOC_DE)
+-	chmod 755 $(LIBDIR)/locale/$(LOC_DE)
+-	mkdir $(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES
+-	chmod 755 $(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES
+-	cp locale/msgs.de $(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/msgs.$(LOC_DE)
+-	gencat $(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/errors.$(LOC_DE)	\
+-	       $(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/msgs.$(LOC_DE)
+-	chmod 644 $(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/*
++	mkdir -p $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)
++	chmod 755 $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)
++	mkdir -p $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES
++	chmod 755 $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES
++	cp locale/msgs.de $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/msgs.$(LOC_DE)
++	gencat $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/errors.$(LOC_DE)	\
++	       $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/msgs.$(LOC_DE)
++	chmod 644 $(DESTDIR)$(LIBDIR)/locale/$(LOC_DE)/LC_MESSAGES/*
+ 
+ uninstall:
+ 	-rm -f  $(BINDIR)/lout $(BINDIR)/c2lout
