@@ -1,5 +1,7 @@
 Summary:	The Lout document formatting language
+Summary(es):	Sistema de formateado de texto
 Summary(pl):	Lout - jêzyk formatowania dokumentów
+Summary(pt_BR):	Sistema de formatação de texto
 Name:		lout
 Version:	3.24
 Release:	1
@@ -13,6 +15,7 @@ Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
 Patch0:		%{name}-makefile.patch
 URL:		http://www.ptc.spbu.ru/~uwe/lout/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	lout-doc
 
 %description
 Lout is a high-level language for document formatting. Lout reads a
@@ -33,6 +36,19 @@ formatting system. Unless you're already a Lout expert, you'll
 probably want to also install the lout-doc package, which contains the
 documentation for Lout.
 
+%description -l es
+El sistema lout lee una descripción de altonivel de un documento
+similar en estilo al LaTeX y produce un archivo PostScript, que puede
+ser impreso en muchas impresoras laser y dispositivos gráficos de
+display. También se encuentra disponible la salida en formato texto.
+Lout ofrece muchas características avanzadas, incluyendo optimización
+de saltos de párrafos y páginas, separación automática, inclusión y
+creación de archivos PsotScript EPS, formatos de ecuaciones, tablas,
+gráficos, rotación y escalonamiento, índices ordenados, banco de datos
+bibliográficos, documentos de múltiples idiomas que incluye separación
+(soporta la mayoría de los idiomas europeos, incluso el ruso),
+formatos de programas C/C++, y mucho más. Todo listo para usar.
+
 %description -l pl
 Lout to jêzyk wysokiego poziomu do formatowania dokumentów. Lout czyta
 opis dokumentu (w stylu przypominaj±cym LaTeX) i mo¿e wyprodukowaæ
@@ -46,53 +62,42 @@ wysokiego poziomu. Lout wspiera (z dzieleniem wyrazów) wiele jêzyków:
 angielski, czeski, duñski, fiñski, francuski, hiszpañski, holenderski,
 niemiecki, norweski, rosyjski, s³oweñski i szwedzki.
 
-%package doc
-Summary:	The documentation for the Lout document formatting language
-Summary(pl):	Dokumentacja do jêzyka formatowania dokumentów Lout
-Group:		Applications/Publishing
-Group(de):	Applikationen/Publizieren
-Group(es):	Aplicaciones/Editoración
-Group(pl):	Aplikacje/Publikowanie
-Group(pt_BR):	Aplicações/Editoração
-
-%description doc
-The lout-doc package includes all of the documentation for the Lout
-document formatting language. The documentation includes manuals for
-regular users and for experts, written in Lout and available as
-PostScript(TM) files. The documentation provides good examples for how
-to write large documents with Lout.
-
-If you're installing the lout package, you should install the lout-doc
-package.
-
-%description doc -l pl
-Ten pakiet zawiera ca³± dokumentacjê do jêzyka formatowania dokumentów
-Lout. Sk³ada siê z podrêczników dla zwyk³ych u¿ytkowników i ekspertów,
-naapisanych w Loucie i dostêpnych w plikach PostScript. Dokumentacja
-to tak¿e dobre przyk³ady jak tworzyæ du¿e dokumenty w Loucie.
+%description -l pt_BR
+O sistema lout lê uma descrição de alto nível de um documento similar
+em estilo ao LaTeX e produz um arquivo PostScript, que pode ser
+impresso em muitas impressoras laser e dispositivos gráficos de
+display. Saída em formato texto também esta disponível. Lout oferece
+muitas características avançadas, incluindo otimização de quebras de
+parágrafos e páginas, hifenização automática, inclusão e geração de
+arquivos PostScript EPS, formatação de equações, tabelas, diagramas,
+rotação e escalamento, índices ordenados, bancos de dados
+bibliográficos, headers e paginação par-ímpar, referência cruzada
+automática, documentos de múltiplos idiomas incluindo hifenização (a
+maioria dos idiomas europeus são suportados, inclusive russo),
+formatação de programas C/C++, e muito mais, tudo pronto para usar.
 
 %prep
 %setup -q 
 %patch0 -p1
 
 %build
-%ifarch sparc
-%{__make} RPM_OPT_FLAGS=""
-%else
-%{__make} RPM_OPT_FLAGS="%{rpmcflags}"
-%endif
+%{__make} lout prg2lout \
+	COPTS="-ansi -pedantic -Wall %{rpmcflags}" \
+	CC=%{__cc}
+
+(cd doc/design; ../../lout -EPS -I ../../include -D../../data all -o ../../design.ps)
+(cd doc/expert; ../../lout -EPS -I ../../include -D../../data all -o ../../expert.ps)
+(cd doc/slides; ../../lout -EPS -I ../../include -D../../data all -o ../../slides.ps)
+(cd doc/user; ../../lout -EPS -I ../../include -D../../data all -o ../../user.ps)
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir},%{_mandir}/man1}
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install installman installdoc
+%{__make} install installman \
+	DESTDIR=$RPM_BUILD_ROOT
 
-for i in user slides expert design; do
-	chmod 755 $RPM_BUILD_ROOT%{_docdir}/lout/$i
-done
-
-gzip -9nf blurb README maillist whatsnew notes.dsc
+gzip -9nf blurb README maillist whatsnew notes.dsc *.ps
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -103,8 +108,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*.1*
 %dir %{_libdir}/lout
-%{_libdir}/lout/*
-
-%files doc
-%defattr(644,root,root,755)
-%doc %{_docdir}/lout
