@@ -1,13 +1,15 @@
---- ./makefile.orig	Sun Oct  8 05:03:11 2000
-+++ ./makefile	Thu Dec  6 02:06:00 2001
-@@ -276,10 +276,11 @@
+Binary files lout-3.29/.makefile.swp and lout-3.29-new/.makefile.swp differ
+diff -uNr lout-3.29/makefile lout-3.29-new/makefile
+--- lout-3.29/makefile	Fri Aug 15 01:08:17 2003
++++ lout-3.29-new/makefile	Thu Jan 29 18:21:17 2004
+@@ -281,10 +281,11 @@
  # DEBUGGING = 1
  # TRACING = -g
  
--BINDIR	= /usr/staff/jeff/bin
--LIBDIR	= /usr/staff/jeff/lout.lib
--DOCDIR	= /usr/staff/jeff/lout.doc
--MANDIR	= /usr/staff/jeff/lout.man
+-BINDIR	= /home/jeff/bin
+-LIBDIR	= /home/jeff/lout.lib
+-DOCDIR	= /home/jeff/lout.doc
+-MANDIR	= /home/jeff/lout.man
 +BINDIR	= /usr/bin
 +LIBDIR	= /usr/lib/lout
 +DOCS	= /usr/share/doc
@@ -16,7 +18,7 @@
  
  LIBFONT = font
  LIBMAPS = maps
-@@ -353,92 +354,95 @@
+@@ -357,92 +358,95 @@
  
  install: lout prg2lout
  	@echo ""
