@@ -4,7 +4,7 @@ Summary(pl):	Lout - jêzyk formatowania dokumentów
 Summary(pt_BR):	Sistema de formatação de texto
 Name:		lout
 Version:	3.29
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Publishing
 Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
@@ -94,7 +94,7 @@ PATH="../..:$PATH" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_prefix}/lib,%{_mandir}/man1}
 
 %{__make} install installman \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -106,5 +106,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc blurb README maillist whatsnew *.ps
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/lout
+%{_prefix}/lib/lout
 %{_mandir}/man1/*.1*
