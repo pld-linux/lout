@@ -4,7 +4,7 @@ Summary(pl):	Lout - jêzyk formatowania dokumentów
 Summary(pt_BR):	Sistema de formatação de texto
 Name:		lout
 Version:	3.29
-Release:	4
+Release:	6
 License:	GPL
 Group:		Applications/Publishing
 Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
@@ -82,13 +82,25 @@ formatação de programas C/C++, e muito mais, tudo pronto para usar.
 	COPTS="-ansi -pedantic -Wall %{rpmcflags}" \
 	CC="%{__cc}"
 
+# process each document three times, to get proper crossreferences
 cd doc/design
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../design.ps
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../design.ps
 ../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../design.ps
 cd ../expert
 ../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../expert.ps
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../expert.ps
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../expert.ps
 cd ../slides
 ../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../slides.ps
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../slides.ps
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../slides.ps
 cd ../user
+# PATH needed for prg2lout filter
+PATH="../..:$PATH" \
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../user.ps
+PATH="../..:$PATH" \
+../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../user.ps
 PATH="../..:$PATH" \
 ../../lout -I../../include -D../../data -C../../maps -F../../font -H../../hyph all -o ../../user.ps
 
