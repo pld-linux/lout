@@ -7,7 +7,7 @@ Source: ftp://ftp.cs.su.oz.au/jeff/lout.3.08.tar.gz
 Patch0: lout-3.08-make.patch
 Patch1: lout-3.08-nobr.patch
 Copyright: GPL
-BuildRoot: /var/tmp/lout-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Lout is a high-level language for document formatting.  Lout reads a
