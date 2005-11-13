@@ -10,7 +10,7 @@ Group:		Applications/Publishing
 Source0:	ftp://ftp.cs.usyd.edu.au/jeff/lout/%{name}-%{version}.tar.gz
 # Source0-md5:	770930dec05f136a29ff078e66e59881
 Patch0:		%{name}-makefile.patch
-URL:		http://www.ptc.spbu.ru/~uwe/lout/
+URL:		http://snark.ptc.spbu.ru/~uwe/lout/lout.html
 Obsoletes:	lout-doc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
