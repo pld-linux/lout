@@ -1,7 +1,7 @@
 Summary:	The Lout document formatting language
-Summary(es):	Sistema de formateado de texto
-Summary(pl):	Lout - jêzyk formatowania dokumentów
-Summary(pt_BR):	Sistema de formatação de texto
+Summary(es.UTF-8):   Sistema de formateado de texto
+Summary(pl.UTF-8):   Lout - jÄ™zyk formatowania dokumentÃ³w
+Summary(pt_BR.UTF-8):   Sistema de formataÃ§Ã£o de texto
 Name:		lout
 Version:	3.31
 Release:	1
@@ -33,45 +33,45 @@ formatting system. Unless you're already a Lout expert, you'll
 probably want to also install the lout-doc package, which contains the
 documentation for Lout.
 
-%description -l es
-El sistema lout lee una descripción de altonivel de un documento
+%description -l es.UTF-8
+El sistema lout lee una descripciÃ³n de altonivel de un documento
 similar en estilo al LaTeX y produce un archivo PostScript, que puede
-ser impreso en muchas impresoras laser y dispositivos gráficos de
-display. También se encuentra disponible la salida en formato texto.
-Lout ofrece muchas características avanzadas, incluyendo optimización
-de saltos de párrafos y páginas, separación automática, inclusión y
-creación de archivos PsotScript EPS, formatos de ecuaciones, tablas,
-gráficos, rotación y escalonamiento, índices ordenados, banco de datos
-bibliográficos, documentos de múltiples idiomas que incluye separación
-(soporta la mayoría de los idiomas europeos, incluso el ruso),
-formatos de programas C/C++, y mucho más. Todo listo para usar.
+ser impreso en muchas impresoras laser y dispositivos grÃ¡ficos de
+display. TambiÃ©n se encuentra disponible la salida en formato texto.
+Lout ofrece muchas caracterÃ­sticas avanzadas, incluyendo optimizaciÃ³n
+de saltos de pÃ¡rrafos y pÃ¡ginas, separaciÃ³n automÃ¡tica, inclusiÃ³n y
+creaciÃ³n de archivos PsotScript EPS, formatos de ecuaciones, tablas,
+grÃ¡ficos, rotaciÃ³n y escalonamiento, Ã­ndices ordenados, banco de datos
+bibliogrÃ¡ficos, documentos de mÃºltiples idiomas que incluye separaciÃ³n
+(soporta la mayorÃ­a de los idiomas europeos, incluso el ruso),
+formatos de programas C/C++, y mucho mÃ¡s. Todo listo para usar.
 
-%description -l pl
-Lout to jêzyk wysokiego poziomu do formatowania dokumentów. Lout czyta
-opis dokumentu (w stylu przypominaj±cym LaTeX) i mo¿e wyprodukowaæ
-plik PostScript(TM) do wydruku lub czysty tekst. Obs³uguje sk³adanie
-dokumentów zawieraj±cych rysunki, diagramy, obracany lub skalowany
-tekst lub grafikê, przypisy, nag³ówki, stopki, indeks, spis tre¶ci
-oraz bibliografiê, odno¶niki, równania matematyczne i wykresy
-statystyczne. Lout mo¿e byæ rozszerzany przez definicje, co u³atwia
-pisane w stosunku do innych jêzyków, poniewa¿ Lout jest jêzykiem
-wysokiego poziomu. Lout wspiera (z dzieleniem wyrazów) wiele jêzyków:
-angielski, czeski, duñski, fiñski, francuski, hiszpañski, holenderski,
-niemiecki, norweski, rosyjski, s³oweñski i szwedzki.
+%description -l pl.UTF-8
+Lout to jÄ™zyk wysokiego poziomu do formatowania dokumentÃ³w. Lout czyta
+opis dokumentu (w stylu przypominajÄ…cym LaTeX) i moÅ¼e wyprodukowaÄ‡
+plik PostScript(TM) do wydruku lub czysty tekst. ObsÅ‚uguje skÅ‚adanie
+dokumentÃ³w zawierajÄ…cych rysunki, diagramy, obracany lub skalowany
+tekst lub grafikÄ™, przypisy, nagÅ‚Ã³wki, stopki, indeks, spis treÅ›ci
+oraz bibliografiÄ™, odnoÅ›niki, rÃ³wnania matematyczne i wykresy
+statystyczne. Lout moÅ¼e byÄ‡ rozszerzany przez definicje, co uÅ‚atwia
+pisane w stosunku do innych jÄ™zykÃ³w, poniewaÅ¼ Lout jest jÄ™zykiem
+wysokiego poziomu. Lout wspiera (z dzieleniem wyrazÃ³w) wiele jÄ™zykÃ³w:
+angielski, czeski, duÅ„ski, fiÅ„ski, francuski, hiszpaÅ„ski, holenderski,
+niemiecki, norweski, rosyjski, sÅ‚oweÅ„ski i szwedzki.
 
-%description -l pt_BR
-O sistema lout lê uma descrição de alto nível de um documento similar
+%description -l pt_BR.UTF-8
+O sistema lout lÃª uma descriÃ§Ã£o de alto nÃ­vel de um documento similar
 em estilo ao LaTeX e produz um arquivo PostScript, que pode ser
-impresso em muitas impressoras laser e dispositivos gráficos de
-display. Saída em formato texto também esta disponível. Lout oferece
-muitas características avançadas, incluindo otimização de quebras de
-parágrafos e páginas, hifenização automática, inclusão e geração de
-arquivos PostScript EPS, formatação de equações, tabelas, diagramas,
-rotação e escalamento, índices ordenados, bancos de dados
-bibliográficos, headers e paginação par-ímpar, referência cruzada
-automática, documentos de múltiplos idiomas incluindo hifenização (a
-maioria dos idiomas europeus são suportados, inclusive russo),
-formatação de programas C/C++, e muito mais, tudo pronto para usar.
+impresso em muitas impressoras laser e dispositivos grÃ¡ficos de
+display. SaÃ­da em formato texto tambÃ©m esta disponÃ­vel. Lout oferece
+muitas caracterÃ­sticas avanÃ§adas, incluindo otimizaÃ§Ã£o de quebras de
+parÃ¡grafos e pÃ¡ginas, hifenizaÃ§Ã£o automÃ¡tica, inclusÃ£o e geraÃ§Ã£o de
+arquivos PostScript EPS, formataÃ§Ã£o de equaÃ§Ãµes, tabelas, diagramas,
+rotaÃ§Ã£o e escalamento, Ã­ndices ordenados, bancos de dados
+bibliogrÃ¡ficos, headers e paginaÃ§Ã£o par-Ã­mpar, referÃªncia cruzada
+automÃ¡tica, documentos de mÃºltiplos idiomas incluindo hifenizaÃ§Ã£o (a
+maioria dos idiomas europeus sÃ£o suportados, inclusive russo),
+formataÃ§Ã£o de programas C/C++, e muito mais, tudo pronto para usar.
 
 %prep
 %setup -q
