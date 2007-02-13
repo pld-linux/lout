@@ -1,7 +1,7 @@
 Summary:	The Lout document formatting language
-Summary(es.UTF-8):   Sistema de formateado de texto
-Summary(pl.UTF-8):   Lout - język formatowania dokumentów
-Summary(pt_BR.UTF-8):   Sistema de formatação de texto
+Summary(es.UTF-8):	Sistema de formateado de texto
+Summary(pl.UTF-8):	Lout - język formatowania dokumentów
+Summary(pt_BR.UTF-8):	Sistema de formatação de texto
 Name:		lout
 Version:	3.31
 Release:	1
